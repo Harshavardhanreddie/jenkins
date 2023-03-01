@@ -2,17 +2,17 @@ pipeline {
     agent none
     stages{
         stage('BUILD') {
-            agent {label 'master'}
+            agent { label 'master' }
             steps{
                  sh '''
                     sleep 5
                     echo "This is a BUILD stage"
-                '''
+                 '''
             }
         }
 
         stage('TEST') {
-            agent {label 'clabel'}
+            agent { label 'clabel' }
             steps{
                 sh '''
                     sleep 6
@@ -22,7 +22,7 @@ pipeline {
         }
 
         stage('DEPLOY') {
-            agent {label 'Jlabel'}
+            agent { label 'Jlabel' }
             steps{
                 sh '''
                     sleep 5
