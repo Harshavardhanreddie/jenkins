@@ -9,7 +9,7 @@ pipeline {
             steps{
                  sh '''
                     sleep 5
-                    echo "This is a BUILD stage $HAR"
+                    echo "This is a BUILD stage and $HAR"
                  '''
             }
         }
@@ -19,7 +19,7 @@ pipeline {
             steps{
                 sh '''
                     sleep 6
-                    echo "This is a TEST stage $HAR"
+                    echo "This is a TEST stage and $HAR"
                 '''
             }
         }
@@ -29,7 +29,7 @@ pipeline {
             steps{
                 sh '''
                     sleep 5
-                    echo "This is a DEPLOY stage $HAR"
+                    echo "This is a DEPLOY stage and $HAR"
                     
                 '''
             }
