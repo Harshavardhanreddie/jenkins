@@ -12,7 +12,7 @@ pipeline {
         }
 
         stage('TEST') {
-            agent { label 'clabel' }
+            agent { label 'clabels' }
             steps{
                 sh '''
                     sleep 6
