@@ -1,11 +1,15 @@
 pipeline {
-    agent none
+    agent { label 'Jlabel' } 
+    parameters {
+         string defaultValue: 'main', name: 'Branch', trim: true
+     }
+    
     environment {
-          HAR = "1"
+        BRANCH_NAME = "${Branch}"
     }
     stages{
         stage('BUILD') {
-            agent { label 'master' }
+            
             steps{
                  sh '''
                     sleep 5
@@ -15,7 +19,7 @@ pipeline {
         }
 
         stage('TEST') {
-            agent { label 'clabels' }
+            
             steps{
                 sh '''
                     sleep 6
@@ -25,7 +29,7 @@ pipeline {
         }
 
         stage('DEPLOY') {
-            agent { label 'Jlabel' }
+            
             steps{
                 sh '''
                     sleep 5
