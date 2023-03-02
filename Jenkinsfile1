@@ -4,8 +4,8 @@ pipeline{
         stage('Build'){
             steps{
                 sh '''
-                sleep 5
-                echo "This is build stage"
+                    sleep 5
+                    echo "This is build stage"
                 '''
             }
         }
@@ -14,24 +14,24 @@ pipeline{
                 stage('testing on linux machine'){
                     steps {
                         sh '''
-                        sleep 5
-                        echo "This is test stage"
+                            sleep 5
+                            echo "This is test stage"
                         '''
                     }
                 }
                 stage('testing on windows machine'){
                     steps{
                         sh '''
-                        sleep 5
-                        echo "This is test stage"
+                            sleep 5
+                            echo "This is test stage"
                         '''
                     }
                 }
                 stage('testing on MAC machine'){
                     steps{
                         sh '''
-                        sleep 5
-                        echo "This is test stage"
+                            sleep 5
+                            echo "This is test stage"
                         '''
                     }
                 }
@@ -40,19 +40,22 @@ pipeline{
         stage('DEPLOY'){
             steps{
                 sh '''
-                sleep 5
-                echo "This is deploy stage"
+                    sleep 5
+                    echo "This is deploy stage"
                 '''
             }    
         }
     }
     Post {
+
         always {
             echo "This runs always"
         }
+
         success{
             echo "This JOB_NAME is SUCESS - $BUILD_NUMBER -$BUILD_ID -$BUILD_DISPLAY_NAME"
         }
+        
         failure{
             echo "This JOB_NAME is FAILURE - $BUILD_NUMBER -$BUILD_ID -$BUILD_DISPLAY_NAME "
         }   
