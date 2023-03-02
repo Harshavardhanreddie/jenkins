@@ -43,9 +43,7 @@ pipeline{
                 sleep 5
                 echo "This is deploy stage"
                 '''
-
             }    
-        
         }
     }
     Post {
@@ -59,5 +57,4 @@ pipeline{
             echo "This JOB_NAME is FAILURE - $BUILD_NUMBER -$BUILD_ID -$BUILD_DISPLAY_NAME "
         }   
     }    
-
 }
