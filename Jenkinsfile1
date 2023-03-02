@@ -3,12 +3,10 @@ pipeline{
     stages{
         stage('Build'){
             steps{
-                catchError(buildResult: 'SUCCESS', stageResult: ''){
-                    sh '''
-                    sleep 5
-                    echo "This is build stage"
-                    exit 1
-                }   '''
+                sh '''
+                sleep 5
+                echo "This is build stage"
+                '''
             }
         }
         stage('TEST'){
@@ -50,5 +48,16 @@ pipeline{
         
         }
     }
+    Post {
+        always {
+            echo "This runs always"
+        }
+        success{
+            echo "This JOB_NAME is SUCESS - $BUILD_NUMBER -$BUILD_ID -$BUILD_DISPLAY_NAME"
+        }
+        failure{
+            echo "This JOB_NAME is FAILURE - $BUILD_NUMBER -$BUILD_ID -$BUILD_DISPLAY_NAME "
+        }   
+    }    
 
 }
