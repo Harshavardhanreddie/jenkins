@@ -1,106 +1,54 @@
 pipeline{
     agent any
     stages{
-           stage('pipeline{
-    agent any
-    stages{
-           stage('Build'){
-                steps{
-                    catchError(buildResult: 'SUCCESS', stageResult: ''){
-                         sh '''
-                         sleep 5
-                         echo "This is build stage"
-                         exit 1
-                    }   '''
-                }
-           }
-           stage('TEST'){
-              parallel{
-                     stage('testing on linux machine'){
-                        steps {
-                            sh '''
-                            sleep 5
-                            echo "This is test stage"
-                            '''
-                        }
-                     }
-                    stage('testing on windows machine'){
-                        steps{
-                            sh '''
-                            sleep 5
-                            echo "This is test stage"
-                            '''
-                        }
-                    }
-                    stage('testing on MAC machine'){
-                        steps{
-                            sh '''
-                            sleep 5
-                            echo "This is test stage"
-                            '''
-                        }
-                    }
-                }
-           }
-            stage('DEPLOY'){
-                steps{
-                    sh '''
-                     sleep 5
-                     echo "This is deploy stage"
-                     '''
-
-                }    
-        
-            }
-    }
-
-}'){
-                steps{
+        stage('Build'){
+            steps{
+                catchError(buildResult: 'SUCCESS', stageResult: ''){
                     sh '''
                     sleep 5
                     echo "This is build stage"
                     exit 1
-                    '''
-                }
-           }
-           stage('TEST'){
-              parallel{
-                     stage('testing on linux machine'){
-                        steps {
-                            sh '''
-                            sleep 5
-                            echo "This is test stage"
-                            '''
-                        }
-                     }
-                    stage('testing on windows machine'){
-                        steps{
-                            sh '''
-                            sleep 5
-                            echo "This is test stage"
-                            '''
-                        }
-                    }
-                    stage('testing on MAC machine'){
-                        steps{
-                            sh '''
-                            sleep 5
-                            echo "This is test stage"
-                            '''
-                        }
-                    }
-                }
-           }
-            stage('DEPLOY'){
-                steps{
-                    sh '''
-                     sleep 5
-                     echo "This is deploy stage"
-                     '''
-
-                }    
-        
+                }   '''
             }
+        }
+        stage('TEST'){
+            parallel{
+                stage('testing on linux machine'){
+                    steps {
+                        sh '''
+                        sleep 5
+                        echo "This is test stage"
+                        '''
+                    }
+                }
+                stage('testing on windows machine'){
+                    steps{
+                        sh '''
+                        sleep 5
+                        echo "This is test stage"
+                        '''
+                    }
+                }
+                stage('testing on MAC machine'){
+                    steps{
+                        sh '''
+                        sleep 5
+                        echo "This is test stage"
+                        '''
+                    }
+                }
+            }
+        }
+        stage('DEPLOY'){
+            steps{
+                sh '''
+                sleep 5
+                echo "This is deploy stage"
+                '''
+
+            }    
+        
+        }
     }
 
 }
