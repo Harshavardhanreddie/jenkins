@@ -3,22 +3,22 @@ pipeline{
     stages{
            stage('Build'){
                 steps{
-                    sh '''
-                     sleep 5
-                     echo "This is build stage"
-                     exit 1
-                     '''
+                    catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE'){                
+                         sh '''
+                         sleep 5
+                         echo "This is build stage"
+                         exit 1
+                    }   '''
                 }
            }
            stage('TEST'){
               parallel{
                      stage('testing on linux machine'){
                         steps {
-                            cathError(buildResult: 'SUCCESS', stageResult: 'FAILURE'){
-                                sh '''
-                                sleep 5
-                                echo "This is test stage"
-                            }   '''
+                            sh '''
+                            sleep 5
+                            echo "This is test stage"
+                            '''
                         }
                      }
                     stage('testing on windows machine'){
@@ -52,5 +52,3 @@ pipeline{
     }
 
 }
-
-
