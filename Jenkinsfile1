@@ -14,10 +14,11 @@ pipeline{
               parallel{
                      stage('testing on linux machine'){
                         steps {
-                            sh '''
-                            sleep 5
-                            echo "This is test stage"
-                            '''
+                            CathError(buildResult: 'SUCCESS', stageResult: 'FAILURE'){
+                                sh '''
+                                sleep 5
+                                echo "This is test stage"
+                            }   '''
                         }
                      }
                     stage('testing on windows machine'){
