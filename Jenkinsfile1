@@ -6,6 +6,7 @@ pipeline{
                     sh '''
                      sleep 5
                      echo "This is build stage"
+                     exit 1
                      '''
                 }
            }
@@ -50,4 +51,3 @@ pipeline{
     }
 
 }
-
