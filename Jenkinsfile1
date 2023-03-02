@@ -1,0 +1,50 @@
+pipeline{
+     agent any
+    stages{
+           stage('Build'){
+                steps{
+                    sh '''
+                     sleep 5
+                     echo "This is build stage"
+                     '''
+                }
+           }
+           stage('TEST'){
+              parallel{
+                     stage('testing on linux machine'){
+                        steps {
+                            sh '''
+                            sleep 5
+                            echo "This is test stage"
+                            '''
+                        }
+                     }
+                    stage('testing on windows machine'){
+                        steps{
+                            sh '''
+                            sleep 5
+                            echo "This is test stage"
+                        }
+                    }
+                    stage('testing on MAC machine'){
+                        steps{
+                            sh '''
+                            sleep 5
+                            echo "This is test stage"
+                        }
+                    }
+                }
+           }
+            stage('DEPLOY'){
+                steps{
+                    sh '''
+                     sleep 5
+                     echo "This is deploy stage"
+                     '''
+
+                }    
+        
+            }
+    }
+
+}
