@@ -14,7 +14,7 @@ pipeline{
               parallel{
                      stage('testing on linux machine'){
                         steps {
-                            CathError(buildResult: 'SUCCESS', stageResult: 'FAILURE'){
+                            cathError(buildResult: 'SUCCESS', stageResult: 'FAILURE'){
                                 sh '''
                                 sleep 5
                                 echo "This is test stage"
