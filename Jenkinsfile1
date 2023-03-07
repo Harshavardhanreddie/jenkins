@@ -5,7 +5,7 @@ pipeline {
             parallel {
                 stage('STAGE-1') {
                     when {
-                        branch 'main'
+                        branch "main"
                     }
                     steps{
                         sh "echo STEGE-2 executes if branch is master"
@@ -14,7 +14,7 @@ pipeline {
 
                 stage('STAGE-2'){
                     when {
-                        branch 'main'
+                        branch "main"
                     }
                     steps{
                         sh "echo STEGE-2 executes if branch is master"
